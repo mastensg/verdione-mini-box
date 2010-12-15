@@ -1,7 +1,22 @@
-update=Wed 01 Dec 2010 04:49:19 PM CET
-last_client=eeschema
+update=Tue 14 Dec 2010 03:29:06 PM CET
+last_client=cvpcb
 [general]
 version=1
+[pcbnew]
+[pcbnew/libraries]
+LibName1=sockets
+LibName2=connect
+LibName3=discret
+LibName4=pin_array
+LibName5=divers
+LibName6=libcms
+LibName7=display
+LibName8=valves
+LibName9=led
+LibName10=dip_sockets
+LibName11=XTAL
+LibName12=power_conn
+LibDir=/home/mastensg/library
 [eeschema]
 version=1
 LibDir=/home/mastensg/projects/trigger_box/schematics;/home/mastensg/library
@@ -69,3 +84,8 @@ LibName28=atmel
 LibName29=contrib
 LibName30=valves
 LibName31=optocoupler
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms

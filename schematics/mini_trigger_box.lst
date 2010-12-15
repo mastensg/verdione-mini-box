@@ -1,0 +1,69 @@
+eeschema (2010-04-21 BZR 23xx)-stable  >> Creation date: Tue 14 Dec 2010 03:31:04 PM CET
+
+#Cmp ( order = Reference )
+| C1         18 pF       
+| C2         18 pF       
+| C3         0.1 uF      
+| C4         0.1 uF      
+| D1         BI_LED      
+| IC1        ATMEGA16-P  
+| J2         AVR-JTAG-10 
+| OC1        6N137       
+| OC2        6N137       
+| P1         CONN_3X2    
+| P2         CONN_3X2    
+| P3         CONN_3X2    
+| P4         CONN_3X2    
+| P5         CONN_3X2    
+| P6         CONN_3X2    
+| P7         CONN_3X2    
+| P8         CONN_2      
+| P9         CONN_2      
+| R1         270 R       
+| R2         270 R       
+| R3         270 R       
+| R4         270 R       
+| R5         4.7 kR      
+| R6         4.7 kR      
+| R7         4.7 kR      
+| R8         10 kR       
+| R9         10 kR       
+| R10        150 R       
+| R11        150 R       
+| X1         CRYSTAL     
+#End Cmp
+
+#Cmp ( order = Value )
+| 0.1 uF       C3        
+| 0.1 uF       C4        
+| 10 kR        R8        
+| 10 kR        R9        
+| 150 R        R10       
+| 150 R        R11       
+| 18 pF        C1        
+| 18 pF        C2        
+| 270 R        R1        
+| 270 R        R2        
+| 270 R        R3        
+| 270 R        R4        
+| 4.7 kR       R5        
+| 4.7 kR       R6        
+| 4.7 kR       R7        
+| 6N137        OC1       
+| 6N137        OC2       
+| ATMEGA16-P   IC1       
+| AVR-JTAG-10  J2        
+| BI_LED       D1        
+| CONN_2       P8        
+| CONN_2       P9        
+| CONN_3X2     P1        
+| CONN_3X2     P2        
+| CONN_3X2     P3        
+| CONN_3X2     P4        
+| CONN_3X2     P5        
+| CONN_3X2     P6        
+| CONN_3X2     P7        
+| CRYSTAL      X1        
+#End Cmp
+
+#End List
