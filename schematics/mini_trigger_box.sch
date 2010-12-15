@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Wed 15 Dec 2010 05:00:02 PM CET
+EESchema Schematic File Version 2  date Wed 15 Dec 2010 09:33:09 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,13 +30,14 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:optocoupler
+LIBS:atmega16
 LIBS:mini_trigger_box-cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
 Title ""
-Date "14 dec 2010"
+Date "15 dec 2010"
 Rev ""
 Comp ""
 Comment1 ""
@@ -44,6 +45,15 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Wire Wire Line
+	8450 3550 8350 3550
+Wire Wire Line
+	8350 3550 8350 2800
+Wire Wire Line
+	8350 2800 8750 2800
+Connection ~ 1800 4300
+Wire Wire Line
+	1800 4300 1800 4650
 Wire Wire Line
 	8750 5450 8750 4950
 Wire Wire Line
@@ -99,14 +109,6 @@ Wire Wire Line
 Wire Wire Line
 	8350 2100 8450 2100
 Wire Wire Line
-	9550 2800 9550 2900
-Wire Wire Line
-	9550 2900 8350 2900
-Wire Wire Line
-	8350 2900 8350 3550
-Wire Wire Line
-	8350 3550 8450 3550
-Wire Wire Line
 	9450 3550 9350 3550
 Wire Wire Line
 	9350 3550 9350 3650
@@ -138,11 +140,8 @@ Wire Wire Line
 	6500 2500 6550 2500
 Wire Wire Line
 	6500 2300 6550 2300
-Connection ~ 1850 4100
 Wire Wire Line
 	1950 4550 1850 4550
-Wire Wire Line
-	1850 4550 1850 4100
 Wire Wire Line
 	1750 4300 1950 4300
 Wire Wire Line
@@ -276,10 +275,7 @@ Wire Wire Line
 	1900 4450 1950 4450
 Connection ~ 1900 4100
 Wire Wire Line
-	1800 4100 1800 4650
-Wire Wire Line
 	1800 4650 1950 4650
-Connection ~ 1800 4100
 Wire Wire Line
 	6500 2400 6550 2400
 Wire Wire Line
@@ -292,10 +288,6 @@ Wire Wire Line
 	8450 2100 8450 2200
 Wire Wire Line
 	9350 2100 9450 2100
-Wire Wire Line
-	8450 3250 8450 2800
-Wire Wire Line
-	8450 2800 8750 2800
 Wire Wire Line
 	9550 2600 9950 2600
 Wire Wire Line
@@ -351,6 +343,15 @@ Wire Wire Line
 Wire Wire Line
 	9200 5150 8900 5150
 Connection ~ 8950 5150
+Wire Wire Line
+	1850 4550 1850 4200
+Connection ~ 1850 4200
+Wire Wire Line
+	8450 3250 8450 3000
+Wire Wire Line
+	8450 3000 9550 3000
+Wire Wire Line
+	9550 3000 9550 2800
 NoConn ~ 6500 3200
 NoConn ~ 6500 3100
 NoConn ~ 6500 3000
@@ -410,7 +411,7 @@ U 1 1 4CF6599B
 P 1750 6850
 F 0 "J2" H 1600 7200 50  0000 C CNN
 F 1 "AVR-JTAG-10" H 1475 6475 50  0000 L BNN
-F 2 "AVR-JTAG-10" V 1225 6875 50  0001 C CNN
+F 2 "PIN_ARRAY_5x2" V 1225 6875 50  0001 C CNN
 	1    1750 6850
 	1    0    0    -1  
 $EndComp
@@ -977,21 +978,21 @@ F 2 "pin_array_3x2" H 1450 1100 60  0001 C CNN
 	1    1450 1100
 	1    0    0    -1  
 $EndComp
-Text GLabel 6550 2400 2    60   Input ~ 0
-C1I
-Text GLabel 6550 2300 2    60   Input ~ 0
-C2I
-Text GLabel 6550 2200 2    60   Input ~ 0
-C3I
-Text GLabel 6550 2100 2    60   Input ~ 0
-C4I
-Text GLabel 6550 2500 2    60   Input ~ 0
-C4O
-Text GLabel 6550 2600 2    60   Input ~ 0
-C3O
-Text GLabel 6550 2700 2    60   Input ~ 0
-C2O
 Text GLabel 6550 2800 2    60   Input ~ 0
+C1I
+Text GLabel 6550 2600 2    60   Input ~ 0
+C2I
+Text GLabel 6550 2400 2    60   Input ~ 0
+C3I
+Text GLabel 6550 2200 2    60   Input ~ 0
+C4I
+Text GLabel 6550 2100 2    60   Input ~ 0
+C4O
+Text GLabel 6550 2300 2    60   Input ~ 0
+C3O
+Text GLabel 6550 2500 2    60   Input ~ 0
+C2O
+Text GLabel 6550 2700 2    60   Input ~ 0
 C1O
 $Comp
 L GND #PWR031
@@ -1056,7 +1057,7 @@ U 1 1 4CF61E52
 P 5500 3700
 F 0 "IC1" H 4700 5430 50  0000 L BNN
 F 1 "ATMEGA16-P" H 5725 1700 50  0000 L BNN
-F 2 "DIL40" H 6000 1625 50  0001 C CNN
+F 2 "DIP-40__600" H 6000 1625 50  0001 C CNN
 	1    5500 3700
 	1    0    0    -1  
 $EndComp
