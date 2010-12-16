@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Wed 15 Dec 2010 09:33:09 PM CET
+EESchema Schematic File Version 2  date Thu 16 Dec 2010 07:52:38 PM CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -37,7 +37,7 @@ EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
 Title ""
-Date "15 dec 2010"
+Date "16 dec 2010"
 Rev ""
 Comp ""
 Comment1 ""
@@ -45,6 +45,27 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 1950 5650
+Wire Wire Line
+	2100 5650 1250 5650
+Wire Wire Line
+	1250 5650 1250 5600
+Wire Wire Line
+	2150 5300 2350 5300
+Wire Wire Line
+	2150 5300 2150 5600
+Wire Wire Line
+	2150 5600 2050 5600
+Wire Wire Line
+	1250 5400 1250 5200
+Wire Wire Line
+	1250 5200 2600 5200
+Wire Wire Line
+	2600 5200 2600 5650
+Wire Wire Line
+	8750 3000 8450 3000
+Wire Wire Line
+	7900 1800 7850 1800
 Wire Wire Line
 	8450 3550 8350 3550
 Wire Wire Line
@@ -59,14 +80,8 @@ Wire Wire Line
 Wire Wire Line
 	8750 4950 9200 4950
 Wire Wire Line
-	2050 5700 2050 5600
-Wire Wire Line
-	2100 5650 1950 5650
-Wire Wire Line
 	1950 5650 1950 5750
 Connection ~ 2600 5500
-Wire Wire Line
-	2600 5650 2600 5500
 Wire Wire Line
 	2350 6850 1900 6850
 Connection ~ 2300 7050
@@ -82,10 +97,6 @@ Wire Wire Line
 	6500 4100 6550 4100
 Wire Wire Line
 	6500 4300 6550 4300
-Wire Wire Line
-	1250 5600 1250 5700
-Wire Wire Line
-	2650 5500 2050 5500
 Wire Wire Line
 	6500 4600 6550 4600
 Wire Wire Line
@@ -128,8 +139,6 @@ Wire Wire Line
 	9350 1700 9350 1900
 Wire Wire Line
 	9350 2200 9350 2100
-Wire Wire Line
-	8350 1800 8450 1800
 Wire Wire Line
 	6500 3500 6550 3500
 Wire Wire Line
@@ -347,11 +356,49 @@ Wire Wire Line
 	1850 4550 1850 4200
 Connection ~ 1850 4200
 Wire Wire Line
-	8450 3250 8450 3000
+	8450 3000 8450 3250
 Wire Wire Line
-	8450 3000 9550 3000
+	9550 2800 9550 3000
 Wire Wire Line
-	9550 3000 9550 2800
+	8400 1800 8450 1800
+Wire Wire Line
+	9550 3000 9250 3000
+Wire Wire Line
+	2600 5500 2650 5500
+Wire Wire Line
+	2050 5650 2050 5700
+Wire Wire Line
+	2350 5300 2350 5450
+$Comp
+L GND #PWR?
+U 1 1 4D0A5FDF
+P 2350 5450
+F 0 "#PWR?" H 2350 5450 30  0001 C CNN
+F 1 "GND" H 2350 5380 30  0001 C CNN
+	1    2350 5450
+	1    0    0    -1  
+$EndComp
+NoConn ~ 2050 5500
+$Comp
+L R R13
+U 1 1 4D0A498E
+P 9000 3000
+F 0 "R13" V 9080 3000 50  0000 C CNN
+F 1 "X R" V 9000 3000 50  0000 C CNN
+F 2 "SM1206" H 9000 3000 60  0001 C CNN
+	1    9000 3000
+	0    1    1    0   
+$EndComp
+$Comp
+L R R12
+U 1 1 4D0A480F
+P 8150 1800
+F 0 "R12" V 8230 1800 50  0000 C CNN
+F 1 "X R" V 8150 1800 50  0000 C CNN
+F 2 "SM1206" H 8150 1800 60  0001 C CNN
+	1    8150 1800
+	0    1    1    0   
+$EndComp
 NoConn ~ 6500 3200
 NoConn ~ 6500 3100
 NoConn ~ 6500 3000
@@ -432,21 +479,11 @@ F 1 "VCC" H 2050 5800 30  0000 C CNN
 	1    2050 5700
 	-1   0    0    1   
 $EndComp
-$Comp
-L GND #PWR04
-U 1 1 4CF658F3
-P 1250 5700
-F 0 "#PWR04" H 1250 5700 30  0001 C CNN
-F 1 "GND" H 1250 5630 30  0001 C CNN
-	1    1250 5700
-	1    0    0    -1  
-$EndComp
 Text GLabel 2650 5500 2    60   Input ~ 0
 SDA
 Text GLabel 1050 5500 0    60   Input ~ 0
 SCL
 NoConn ~ 2050 5400
-NoConn ~ 1250 5400
 $Comp
 L CONN_3X2 P6
 U 1 1 4CF658C5
@@ -642,7 +679,7 @@ F 2 "optocoupler-DIL08" H 8950 2150 50  0001 C CNN
 	1    8950 2000
 	1    0    0    -1  
 $EndComp
-Text GLabel 8350 1800 0    60   Input ~ 0
+Text GLabel 7850 1800 0    60   Input ~ 0
 TO
 Text GLabel 9450 3450 2    60   Input ~ 0
 TI
