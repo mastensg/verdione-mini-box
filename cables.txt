@@ -1,0 +1,7 @@
+Box conn. pin   Board conn. pin     Color
+1               6                   Brown
+2               5                   Red
+3               4                   Orange
+4               3                   Yellow
+5               2                   Green
+6               1                   Blue
