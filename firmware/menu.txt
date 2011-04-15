@@ -1,0 +1,10 @@
+Exit
+
+Save settings
+
+Triggering
+(On/off): On
+Set brightness
+(1 - 8): 5
+Set contrast
+(1 - 50): 40
