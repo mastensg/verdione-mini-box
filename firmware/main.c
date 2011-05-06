@@ -5,18 +5,20 @@
 #include <util/delay.h>
 #include <util/twi.h>
 
-#define FRAMERATEADDR   9
-#define FRAMERATEDFLT   16
+#define FRAMERATEADDR   10 // 2 bytes
+#define MULTIPLIERSADDR 12 // 4 bytes
+#define BRIGHTNESSADDR  16 // 1 byte
+#define CONTRASTADDR    17 // 1 byte
 
 #define INPUT_STATE_TIMED   0
 #define INPUT_STATE_TIMING  1
 
 #define LENGTH(array)   (sizeof(array) / sizeof(array[0]))
-//#define PERIOD(f)       (250000/8/f) // XXX
-#define PERIOD(f)       (250000/f)
+#define PERIOD(f)       (250000/8/f)
 
 #define BUTTON_DDR      DDRB
 #define BUTTON_PIN      PINB
+#define BUTTON_PORT     PORTB
 #define BUTTON_1        (1 << PB0)
 #define BUTTON_2        (1 << PB1)
 #define BUTTON_3        (1 << PB2)
@@ -24,6 +26,7 @@
 #define CAMERA_DDR      DDRA
 #define CAMERA_PIN      PINA
 #define CAMERA_PORT     PORTA
+#define CAMERA_MASK     0b10101010
 
 #define LCD_DISPLAY_ON      0x41
 #define LCD_DISPLAY_OFF     0x42
@@ -58,62 +61,62 @@
 
 #define TWI_SLA_DISP    0x50
 
-static volatile uint8_t multipliers[4] = {0, 0, 0, 0};
-static volatile uint8_t time = 0;
-static volatile uint8_t cameras = 0b10101010;
-static volatile uint16_t framerate = 16;
-static volatile uint8_t cursor = 0x40;
+static volatile uint8_t beats = 0;
+
+static uint8_t cursor;
+static uint16_t framerate;
+static uint8_t multipliers[4];
 
 ISR(INT0_vect) {
+    static volatile uint8_t cameras = 0;
+
+    LED_PORT ^= LED_RED;
     CAMERA_PORT = cameras;
     _delay_us(32);
     CAMERA_PORT = 0;
 
-    ++time;
+    ++beats;
     cameras = 0;
     for(uint8_t i = 0; i < 4; ++i)
-        cameras |= (!(time % (8 >> multipliers[i])) << (2 * i + 1));
+        cameras |= (!(beats % (8 >> multipliers[i])) << (2 * i + 1));
 
     TCCR2 |= (1 << CS21); // Start Timer2 with CK/8 prescaler (2 MHz).
 }
 
 ISR(TIMER0_COMP_vect) {
-    TRIGGER_PORT &= ~TRIGGER_OUT;
-    TCCR0 &= ~((1 << CS01) | (1 << CS00)); // Stop Timer0.
+    TRIGGER_PORT |= TRIGGER_OUT;
+
+    /* Stop Timer0. */
+    TCCR0 &= ~((1 << CS01) | (1 << CS00));
 }
 
+/* Base frequency (times 8) handler. */
 ISR(TIMER1_COMPA_vect) {
-    // XXX
-    CAMERA_PORT ^= cameras;
-    //_delay_us(32);
-    //CAMERA_PORT = 0;
-
-    return;
-
+    /* t counts the times 8 base beats. */
     static uint8_t t = 0;
 
-    TRIGGER_PORT |= TRIGGER_OUT;
+    TRIGGER_PORT &= ~TRIGGER_OUT;
 
     ++t;
 
+    /* Send a long pulse every 8 beats. */
     if(t % 8) {
         OCR0 = 1;
     } else {
         OCR0 = 32;
-        //LED_PORT ^= LED_GREEN;
     }
 
-    TCNT0  = 0;           // Clear Timer0.
-    TCCR0 |= (1 << CS01) | (1 << CS00); // Start Timer0 with CK/8 prescaler (2 MHz).
+    /* Restart Timer0 with CK/8 prescaler (2 MHz). */
+    TCNT0 = 0;
+    TCCR0 |= (1 << CS01) | (1 << CS00);
 }
 
 ISR(TIMER2_COMP_vect) {
-    if(TRIGGER_PIN & TRIGGER_IN) {
-        time = 0;
-    } else {
-    }
+    if(TRIGGER_PIN & TRIGGER_IN)
+        beats = 0;
 
-    TCCR2 &= ~(1 << CS21); // Stop Timer2;
+    /* Stop Timer2. */
+    TCCR2 &= ~(1 << CS21);
 }
 
 static void
@@ -140,12 +143,12 @@ trigger_input_init(void) {
 }
 
 static void
-trigger_output_init(uint16_t framerate) {
+trigger_output_init() {
     TRIGGER_DDR |= TRIGGER_OUT;
 
     /*
      * Timer1 generates an interrupt at 8x the base framerate.
-     * When the interrupt is handled, the output trigger pin is set high.
+     * The interrupt handler sets the output trigger pin low.
      */
 
     TCCR1B = (1 << WGM12)   // Clear timer on compare match.
@@ -160,8 +163,7 @@ trigger_output_init(uint16_t framerate) {
      * Timer0 generates an interrupt after counting up to a predefined value.
      * This value is specified in the Timer1 Output Compare Match handler.
      *
-     * When the Timer0 Output Compare Match interrupt is handled, the output
-     * trigger pin is set low.
+     * The interrupt handler sets the output trigger pin high.
      */
 
     TCCR0  = (1 << WGM01); // Clear timer on compare match.
@@ -217,27 +219,7 @@ lcd_command(uint8_t command) {
 
 static void
 lcd_putchar(uint8_t c) {
-    /*
-    static uint8_t col = 0;
-
-    if(c == '\n') {
-        for(; col < 40; ++col)
-            twi_send_byte(' ');
-
-        col = 0;
-        return;
-    }
-
-    if(col == 16) {
-        for(; col < 40; ++col)
-            twi_send_byte(' ');
-
-        col = 0;
-    }
-    */
-
     twi_send_byte(c);
-    //++col;
 }
 
 static void
@@ -289,6 +271,8 @@ lcd_init(void) {
     lcd_command(LCD_DISPLAY_ON);
     lcd_command(LCD_BLINK_ON);
 
+    cursor = 0x40;
+
     lcd_message("Mini trigger box\n   Simula  RL   ");
 }
 
@@ -296,12 +280,17 @@ static void
 lcd_update(void) {
     lcd_command(LCD_CLEAR_SCREEN);
 
+    CAMERA_PORT |= ~CAMERA_MASK;
     for(uint8_t i = 0; i < 4; ++i) {
         lcd_command(LCD_CURSOR_SET);
         lcd_putchar(4 * i);
         lcd_putdigit(1 << multipliers[i]);
         lcd_putchar('x');
-        lcd_putchar('D');
+
+        if(!(CAMERA_PIN & (1 << (2 * i))))
+            lcd_putchar('C');
+        else
+            lcd_putchar(' ');
     }
 
     lcd_command(LCD_CURSOR_SET);
@@ -316,6 +305,33 @@ lcd_update(void) {
 
     lcd_command(LCD_CURSOR_SET);
     twi_send_byte(cursor);
+}
+
+static void
+restore_settings(void) {
+    // Framerate.
+    eeprom_busy_wait();
+    framerate = eeprom_read_word((const uint16_t *)FRAMERATEADDR);
+    if(framerate == 0xffff)
+        framerate = 1;
+
+    // Multipliers.
+    eeprom_busy_wait();
+    eeprom_read_block(multipliers, (uint16_t *)MULTIPLIERSADDR, sizeof multipliers);
+    for(uint8_t i = 0; i < LENGTH(multipliers); ++i)
+        if(multipliers[i] > 3)
+            multipliers[i] = 0;
+}
+
+static void
+store_settings(void) {
+    // Framerate.
+    eeprom_busy_wait();
+    eeprom_write_word((uint16_t *)FRAMERATEADDR, framerate);
+
+    // Multipliers.
+    eeprom_busy_wait();
+    eeprom_write_block(multipliers, (uint16_t *)MULTIPLIERSADDR, sizeof multipliers);
 }
 
 static void
@@ -353,15 +369,15 @@ button_handle_press(uint8_t button) {
             if(framerate <= 500)
                 OCR1A = PERIOD(++framerate);
         } else {
-            if(framerate > 2)
+            if(framerate > 1)
                 OCR1A = PERIOD(--framerate);
         }
         break;
     case 0x40 + 8:
         // Store settings.
-        eeprom_busy_wait();
-        eeprom_write_byte((uint8_t *)FRAMERATEADDR, framerate);
-        lcd_message("Saved!");
+        store_settings();
+        lcd_message("Stored!");
+        _delay_ms(1000);
         break;
     case 0x40 + 12:
         // Enter menu.
@@ -392,7 +408,7 @@ button_handle_hold(uint8_t button) {
             if(framerate <= 500)
                 OCR1A = PERIOD(++framerate);
         } else {
-            if(framerate > 2)
+            if(framerate > 1)
                 OCR1A = PERIOD(--framerate);
         }
     }
@@ -400,43 +416,44 @@ button_handle_hold(uint8_t button) {
     lcd_update();
 }
 
+static void
+button_init(void) {
+    BUTTON_DDR &= ~(BUTTON_1 | BUTTON_2 | BUTTON_3);
+    BUTTON_PORT |= (BUTTON_1 | BUTTON_2 | BUTTON_3);
+}
+
 int
 main(void) {
-    uint8_t button_jiffies[3] = {0, 0, 0};
-    uint8_t button_held = 0b00000000;
-    uint8_t button_state = 0b00000000;
+    LED_PORT ^= LED_RED;
+    _delay_ms(100);
+    LED_PORT ^= LED_RED;
+    _delay_ms(100);
+    LED_PORT ^= LED_RED;
+    _delay_ms(100);
+    LED_PORT ^= LED_RED;
+    _delay_ms(100);
+    LED_PORT ^= LED_RED;
+    _delay_ms(100);
+    LED_PORT ^= LED_RED;
+
+    restore_settings();
 
     lcd_init();
-
-    eeprom_busy_wait();
-    framerate = eeprom_read_byte((const uint8_t *)FRAMERATEADDR);
-    if(framerate == 0xff) {
-        eeprom_busy_wait();
-        eeprom_write_byte((uint8_t *)FRAMERATEADDR, FRAMERATEDFLT);
-    }
-
+    button_init();
     camera_output_init();
-
     led_init();
-
     trigger_input_init();
-    trigger_output_init(framerate);
+    trigger_output_init();
 
-    LED_PORT ^= LED_RED;
-    _delay_ms(100);
-    LED_PORT ^= LED_RED;
-    _delay_ms(100);
-    LED_PORT ^= LED_RED;
-    _delay_ms(100);
-    LED_PORT ^= LED_RED;
-    _delay_ms(100);
-    LED_PORT ^= LED_RED;
-    _delay_ms(100);
-    LED_PORT ^= LED_RED;
+    // Display welcome dialog for a while.
+    _delay_ms(1000);
 
     sei();
 
-    lcd_update();
+    uint8_t button_jiffies[3] = {0, 0, 0};
+    uint8_t button_held = 0b00000000;
+    uint8_t button_state = 0b00000000;
+    uint8_t lcd_jiffies = 0;
 
     for (;;) {
         _delay_ms(10);
@@ -464,5 +481,8 @@ main(void) {
                     button_handle_hold(button);
             }
         }
+
+        if(!(lcd_jiffies++ % 64))
+            lcd_update();
     }
 }
