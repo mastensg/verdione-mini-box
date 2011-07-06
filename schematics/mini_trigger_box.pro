@@ -1,7 +1,5 @@
-update=Mon 07 Feb 2011 04:53:15 PM CET
-last_client=pcbnew
-[general]
-version=1
+update=Wed 06 Jul 2011 06:43:43 PM CEST
+last_client=kicad
 [eeschema]
 version=1
 LibDir=/home/mastensg/projects/trigger_box/schematics;/home/mastensg/library
@@ -116,3 +114,5 @@ LibName18=optocoupler
 LibName19=optocoupler-2
 LibName20=power_conn
 LibName21=XTAL
+[general]
+version=1

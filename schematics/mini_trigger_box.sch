@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Thu 16 Dec 2010 07:52:38 PM CET
+EESchema Schematic File Version 2  date Wed 06 Jul 2011 06:57:27 PM CEST
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -31,7 +31,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:optocoupler
 LIBS:atmega16
-LIBS:mini_trigger_box-cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
@@ -1064,7 +1063,7 @@ U 1 1 4CF62E80
 P 4100 3000
 F 0 "C2" H 4150 3100 50  0000 L CNN
 F 1 "18 pF" H 4150 2900 50  0000 L CNN
-F 2 "C1" H 4100 3000 60  0001 C CNN
+F 2 "SM1206" H 4100 3000 60  0001 C CNN
 	1    4100 3000
 	0    1    1    0   
 $EndComp
@@ -1074,7 +1073,7 @@ U 1 1 4CF62E73
 P 4100 2400
 F 0 "C1" H 4150 2500 50  0000 L CNN
 F 1 "18 pF" H 4150 2300 50  0000 L CNN
-F 2 "C1" H 4100 2400 60  0001 C CNN
+F 2 "SM1206" H 4100 2400 60  0001 C CNN
 	1    4100 2400
 	0    1    1    0   
 $EndComp

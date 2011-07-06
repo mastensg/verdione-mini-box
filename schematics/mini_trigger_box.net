@@ -1,259 +1,225 @@
-# EESchema Netlist Version 1.1 created  Thu 16 Dec 2010 07:52:46 PM CET
+# EESchema Netlist Version 1.1 created  Wed 06 Jul 2011 06:43:15 PM CEST
 (
- ( /4D0A498E SM1206  R13 X_R {Lib=R}
-  (    1 N-000050 )
-  (    2 N-000046 )
+ ( /4CF62E73 SM1206 C1 18_pF
+  ( 1 N-000024 )
+  ( 2 GND )
  )
- ( /4D0A480F SM1206  R12 X_R {Lib=R}
-  (    1 N-000049 )
-  (    2 N-000013 )
+ ( /4CF62E80 SM1206 C2 18_pF
+  ( 1 N-000030 )
+  ( 2 GND )
  )
- ( /4CF65D8B SM1206  R8 10_kR {Lib=R}
-  (    1 VCC )
-  (    2 N-000043 )
+ ( /4CF64D87 SM1206 C3 0.1_uF
+  ( 1 VCC )
+  ( 2 GND )
  )
- ( /4CF65D61 SM1206  R9 10_kR {Lib=R}
-  (    1 N-000036 )
-  (    2 VCC )
+ ( /4CF64DF7 SM1206 C4 0.1_uF
+  ( 1 VCC )
+  ( 2 GND )
  )
- ( /4CF6599B PIN_ARRAY_5x2  J2 AVR-JTAG-10 {Lib=AVR-JTAG-10}
-  (    1 N-000055 )
-  (    2 GND )
-  (    3 N-000053 )
-  (    4 VCC )
-  (    5 N-000054 )
-  (    6 N-000026 )
-  (    7 ? )
-  (    8 ? )
-  (    9 N-000034 )
-  (   10 GND )
+ ( /4CF6507F PIN_ARRAY_3X1 D1 BI_LED
+  ( 1 N-000019 )
+  ( 2 GND )
+  ( 3 N-000020 )
  )
- ( /4CF658C5 pin_array_3x2  P6 CONN_3X2 {Lib=CONN_3X2}
-  (    1 N-000036 )
-  (    2 ? )
-  (    3 N-000043 )
-  (    4 ? )
-  (    5 VCC )
-  (    6 GND )
+ ( /4CF61E52 DIP-40__600 IC1 ATMEGA16-P
+  ( 1 N-000003 )
+  ( 2 N-000057 )
+  ( 3 N-000045 )
+  ( 4 ? )
+  ( 5 ? )
+  ( 6 ? )
+  ( 7 ? )
+  ( 8 ? )
+  ( 9 N-000026 )
+  ( 10 VCC )
+  ( 11 GND )
+  ( 12 N-000024 )
+  ( 13 N-000030 )
+  ( 14 ? )
+  ( 15 ? )
+  ( 16 N-000022 )
+  ( 17 ? )
+  ( 18 ? )
+  ( 19 N-000013 )
+  ( 20 N-000025 )
+  ( 21 N-000037 )
+  ( 22 N-000043 )
+  ( 23 N-000036 )
+  ( 24 N-000055 )
+  ( 25 N-000054 )
+  ( 26 N-000053 )
+  ( 27 N-000034 )
+  ( 28 ? )
+  ( 29 ? )
+  ( 30 VCC )
+  ( 31 GND )
+  ( 32 ? )
+  ( 33 N-000035 )
+  ( 34 N-000040 )
+  ( 35 N-000016 )
+  ( 36 N-000021 )
+  ( 37 N-000033 )
+  ( 38 N-000044 )
+  ( 39 N-000032 )
+  ( 40 N-000042 )
  )
- ( /4CF650A0 SM1206  R11 150_R {Lib=R}
-  (    1 N-000020 )
-  (    2 N-000025 )
+ ( /4CF6599B PIN_ARRAY_5x2 J2 AVR-JTAG-10
+  ( 1 N-000055 )
+  ( 2 GND )
+  ( 3 N-000053 )
+  ( 4 VCC )
+  ( 5 N-000054 )
+  ( 6 N-000026 )
+  ( 7 ? )
+  ( 8 ? )
+  ( 9 N-000034 )
+  ( 10 GND )
  )
- ( /4CF65092 SM1206  R10 150_R {Lib=R}
-  (    1 N-000019 )
-  (    2 N-000037 )
+ ( /4CF64A48 optocoupler-DIL08 OC1 6N137
+  ( 2 N-000049 )
+  ( 3 GND )
+  ( 5 GND )
+  ( 6 N-000056 )
+  ( 7 VCC )
+  ( 8 VCC )
  )
- ( /4CF6507F PIN_ARRAY_3X1  D1 BI_LED {Lib=BI_LED}
-  (    1 N-000019 )
-  (    2 GND )
-  (    3 N-000020 )
+ ( /4CF64DFB optocoupler-DIL08 OC2 6N137
+  ( 2 N-000046 )
+  ( 3 N-000023 )
+  ( 5 GND )
+  ( 6 N-000022 )
+  ( 7 VCC )
+  ( 8 VCC )
  )
- ( /4CF64F1B P11  P9 CONN_2 {Lib=CONN_2}
-  (    1 VCC )
-  (    2 GND )
+ ( /4CF6321B pin_array_3x2 P1 CONN_3X2
+  ( 1 +12V )
+  ( 2 N-000032 )
+  ( 3 ? )
+  ( 4 N-000042 )
+  ( 5 GND )
+  ( 6 GND )
  )
- ( /4CF64F14 P11  P8 CONN_2 {Lib=CONN_2}
-  (    1 +12V )
-  (    2 GND )
+ ( /4CF637A0 pin_array_3x2 P2 CONN_3X2
+  ( 1 +12V )
+  ( 2 N-000033 )
+  ( 3 ? )
+  ( 4 N-000044 )
+  ( 5 GND )
+  ( 6 GND )
  )
- ( /4CF64E44 pin_array_3x2  P7 CONN_3X2 {Lib=CONN_3X2}
-  (    1 GND )
-  (    2 N-000056 )
-  (    3 ? )
-  (    4 ? )
-  (    5 N-000023 )
-  (    6 N-000050 )
+ ( /4CF637AA pin_array_3x2 P3 CONN_3X2
+  ( 1 +12V )
+  ( 2 N-000016 )
+  ( 3 ? )
+  ( 4 N-000021 )
+  ( 5 GND )
+  ( 6 GND )
  )
- ( /4CF64DFB optocoupler-DIL08  OC2 6N137 {Lib=6N137}
-  (    2 N-000046 )
-  (    3 N-000023 )
-  (    5 GND )
-  (    6 N-000022 )
-  (    7 VCC )
-  (    8 VCC )
+ ( /4CF637A1 pin_array_3x2 P4 CONN_3X2
+  ( 1 +12V )
+  ( 2 N-000035 )
+  ( 3 ? )
+  ( 4 N-000040 )
+  ( 5 GND )
+  ( 6 GND )
  )
- ( /4CF64DF7 SM1206  C4 0.1_uF {Lib=C}
-  (    1 VCC )
-  (    2 GND )
+ ( /4CF63EFB pin_array_3x2 P5 CONN_3X2
+  ( 1 GND )
+  ( 2 N-000003 )
+  ( 3 GND )
+  ( 4 N-000057 )
+  ( 5 GND )
+  ( 6 N-000045 )
  )
- ( /4CF64D87 SM1206  C3 0.1_uF {Lib=C}
-  (    1 VCC )
-  (    2 GND )
+ ( /4CF658C5 pin_array_3x2 P6 CONN_3X2
+  ( 1 N-000036 )
+  ( 2 ? )
+  ( 3 N-000043 )
+  ( 4 ? )
+  ( 5 VCC )
+  ( 6 GND )
  )
- ( /4CF64A48 optocoupler-DIL08  OC1 6N137 {Lib=6N137}
-  (    2 N-000049 )
-  (    3 GND )
-  (    5 GND )
-  (    6 N-000056 )
-  (    7 VCC )
-  (    8 VCC )
+ ( /4CF64E44 pin_array_3x2 P7 CONN_3X2
+  ( 1 GND )
+  ( 2 N-000056 )
+  ( 3 ? )
+  ( 4 ? )
+  ( 5 N-000023 )
+  ( 6 N-000050 )
  )
- ( /4CF63F72 SM1206  R7 4.7_kR {Lib=R}
-  (    1 VCC )
-  (    2 N-000045 )
+ ( /4CF64F14 P11 P8 CONN_2
+  ( 1 +12V )
+  ( 2 GND )
  )
- ( /4CF63F6E SM1206  R6 4.7_kR {Lib=R}
-  (    1 VCC )
-  (    2 N-000057 )
+ ( /4CF64F1B P11 P9 CONN_2
+  ( 1 VCC )
+  ( 2 GND )
  )
- ( /4CF63F4B SM1206  R5 4.7_kR {Lib=R}
-  (    1 VCC )
-  (    2 N-000003 )
+ ( /4CF63741 SM1206 R1 270_R
+  ( 1 VCC )
+  ( 2 N-000042 )
  )
- ( /4CF63EFB pin_array_3x2  P5 CONN_3X2 {Lib=CONN_3X2}
-  (    1 GND )
-  (    2 N-000003 )
-  (    3 GND )
-  (    4 N-000057 )
-  (    5 GND )
-  (    6 N-000045 )
+ ( /4CF6379C SM1206 R2 270_R
+  ( 1 VCC )
+  ( 2 N-000044 )
  )
- ( /4CF637AA pin_array_3x2  P3 CONN_3X2 {Lib=CONN_3X2}
-  (    1 +12V )
-  (    2 N-000016 )
-  (    3 ? )
-  (    4 N-000021 )
-  (    5 GND )
-  (    6 GND )
+ ( /4CF637A6 SM1206 R3 270_R
+  ( 1 VCC )
+  ( 2 N-000021 )
  )
- ( /4CF637A6 SM1206  R3 270_R {Lib=R}
-  (    1 VCC )
-  (    2 N-000021 )
+ ( /4CF637A5 SM1206 R4 270_R
+  ( 1 VCC )
+  ( 2 N-000040 )
  )
- ( /4CF637A5 SM1206  R4 270_R {Lib=R}
-  (    1 VCC )
-  (    2 N-000040 )
+ ( /4CF63F4B SM1206 R5 4.7_kR
+  ( 1 VCC )
+  ( 2 N-000003 )
  )
- ( /4CF637A1 pin_array_3x2  P4 CONN_3X2 {Lib=CONN_3X2}
-  (    1 +12V )
-  (    2 N-000035 )
-  (    3 ? )
-  (    4 N-000040 )
-  (    5 GND )
-  (    6 GND )
+ ( /4CF63F6E SM1206 R6 4.7_kR
+  ( 1 VCC )
+  ( 2 N-000057 )
  )
- ( /4CF637A0 pin_array_3x2  P2 CONN_3X2 {Lib=CONN_3X2}
-  (    1 +12V )
-  (    2 N-000033 )
-  (    3 ? )
-  (    4 N-000044 )
-  (    5 GND )
-  (    6 GND )
+ ( /4CF63F72 SM1206 R7 4.7_kR
+  ( 1 VCC )
+  ( 2 N-000045 )
  )
- ( /4CF6379C SM1206  R2 270_R {Lib=R}
-  (    1 VCC )
-  (    2 N-000044 )
+ ( /4CF65D8B SM1206 R8 10_kR
+  ( 1 VCC )
+  ( 2 N-000043 )
  )
- ( /4CF63741 SM1206  R1 270_R {Lib=R}
-  (    1 VCC )
-  (    2 N-000042 )
+ ( /4CF65D61 SM1206 R9 10_kR
+  ( 1 N-000036 )
+  ( 2 VCC )
  )
- ( /4CF6321B pin_array_3x2  P1 CONN_3X2 {Lib=CONN_3X2}
-  (    1 +12V )
-  (    2 N-000032 )
-  (    3 ? )
-  (    4 N-000042 )
-  (    5 GND )
-  (    6 GND )
+ ( /4CF65092 SM1206 R10 150_R
+  ( 1 N-000019 )
+  ( 2 N-000037 )
  )
- ( /4CF62E80 C1  C2 18_pF {Lib=C}
-  (    1 N-000030 )
-  (    2 GND )
+ ( /4CF650A0 SM1206 R11 150_R
+  ( 1 N-000020 )
+  ( 2 N-000025 )
  )
- ( /4CF62E73 C1  C1 18_pF {Lib=C}
-  (    1 N-000024 )
-  (    2 GND )
+ ( /4D0A480F SM1206 R12 X_R
+  ( 1 N-000049 )
+  ( 2 N-000013 )
  )
- ( /4CF62E1D XTAL  X1 CRYSTAL {Lib=CRYSTAL}
-  (    1 N-000024 )
-  (    2 N-000030 )
+ ( /4D0A498E SM1206 R13 X_R
+  ( 1 N-000050 )
+  ( 2 N-000046 )
  )
- ( /4CF61E52 DIP-40__600  IC1 ATMEGA16-P {Lib=ATMEGA16-P}
-  (    1 N-000003 )
-  (    2 N-000057 )
-  (    3 N-000045 )
-  (    4 ? )
-  (    5 ? )
-  (    6 ? )
-  (    7 ? )
-  (    8 ? )
-  (    9 N-000026 )
-  (   10 VCC )
-  (   11 GND )
-  (   12 N-000024 )
-  (   13 N-000030 )
-  (   14 ? )
-  (   15 ? )
-  (   16 N-000022 )
-  (   17 ? )
-  (   18 ? )
-  (   19 N-000013 )
-  (   20 N-000025 )
-  (   21 N-000037 )
-  (   22 N-000043 )
-  (   23 N-000036 )
-  (   24 N-000055 )
-  (   25 N-000054 )
-  (   26 N-000053 )
-  (   27 N-000034 )
-  (   28 ? )
-  (   29 ? )
-  (   30 VCC )
-  (   31 GND )
-  (   32 ? )
-  (   33 N-000035 )
-  (   34 N-000040 )
-  (   35 N-000016 )
-  (   36 N-000021 )
-  (   37 N-000033 )
-  (   38 N-000044 )
-  (   39 N-000032 )
-  (   40 N-000042 )
+ ( /4CF62E1D XTAL X1 CRYSTAL
+  ( 1 N-000024 )
+  ( 2 N-000030 )
  )
 )
 *
 { Allowed footprints by component:
-$component R13
- R?
- SM0603
- SM0805
- R?-*
+$component C1
+ SM*
+ C?
+ C1-1
 $endlist
-$component R12
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R8
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R9
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component J2
- AVR-JTAG-10
-$endlist
-$component R11
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R10
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component C4
+$component C2
  SM*
  C?
  C1-1
@@ -263,19 +229,25 @@ $component C3
  C?
  C1-1
 $endlist
-$component R7
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component IC1
+ 40DIP-ELL600
+ 40dip600
+$endlist
+$component J2
+ AVR-JTAG-10
+$endlist
+$component R1
  R?
  SM0603
  SM0805
  R?-*
 $endlist
-$component R6
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R5
+$component R2
  R?
  SM0603
  SM0805
@@ -293,193 +265,59 @@ $component R4
  SM0805
  R?-*
 $endlist
-$component R2
+$component R5
  R?
  SM0603
  SM0805
  R?-*
 $endlist
-$component R1
+$component R6
  R?
  SM0603
  SM0805
  R?-*
 $endlist
-$component C2
- SM*
- C?
- C1-1
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
 $endlist
-$component C1
- SM*
- C?
- C1-1
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
 $endlist
-$component IC1
- 40DIP-ELL600
- 40dip600
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
 $endlist
 $endfootprintlist
 }
-{ Pin List by Nets
-Net 2 "VCC" "VCC"
- OC1 7
- OC1 8
- P6 5
- R2 1
- R8 1
- P9 1
- R1 1
- R9 2
- R4 1
- J2 4
- C3 1
- C4 1
- R7 1
- R6 1
- OC2 8
- R5 1
- OC2 7
- IC1 10
- R3 1
- IC1 30
-Net 3 "" ""
- P5 2
- IC1 1
- R5 2
-Net 12 "+12V" "+12V"
- P2 1
- P4 1
- P1 1
- P8 1
- P3 1
-Net 13 "" ""
- IC1 19
- R12 2
-Net 15 "GND" "GND"
- P4 5
- P2 5
- P2 6
- P4 6
- P1 5
- P1 6
- P8 2
- P9 2
- D1 2
- OC1 5
- OC1 3
- P3 5
- P3 6
- C4 2
- P5 5
- P5 3
- P5 1
- P7 1
- IC1 11
- C1 2
- C2 2
- IC1 31
- J2 2
- C3 2
- OC2 5
- J2 10
- P6 6
-Net 16 "" ""
- IC1 35
- P3 2
-Net 19 "" ""
- D1 1
- R10 1
-Net 20 "" ""
- D1 3
- R11 1
-Net 21 "" ""
- R3 2
- IC1 36
- P3 4
-Net 22 "" ""
- OC2 6
- IC1 16
-Net 23 "" ""
- P7 5
- OC2 3
-Net 24 "" ""
- X1 1
- C1 1
- IC1 12
-Net 25 "" ""
- R11 2
- IC1 20
-Net 26 "" ""
- J2 6
- IC1 9
-Net 30 "" ""
- IC1 13
- C2 1
- X1 2
-Net 32 "" ""
- IC1 39
- P1 2
-Net 33 "" ""
- IC1 37
- P2 2
-Net 34 "" ""
- IC1 27
- J2 9
-Net 35 "" ""
- P4 2
- IC1 33
-Net 36 "" ""
- R9 1
- P6 1
- IC1 23
-Net 37 "" ""
- R10 2
- IC1 21
-Net 40 "" ""
- P4 4
- IC1 34
- R4 2
-Net 42 "" ""
- IC1 40
- R1 2
- P1 4
-Net 43 "" ""
- IC1 22
- P6 3
- R8 2
-Net 44 "" ""
- P2 4
- R2 2
- IC1 38
-Net 45 "" ""
- P5 6
- R7 2
- IC1 3
-Net 46 "" ""
- OC2 2
- R13 2
-Net 49 "" ""
- OC1 2
- R12 1
-Net 50 "" ""
- R13 1
- P7 6
-Net 53 "" ""
- J2 3
- IC1 26
-Net 54 "" ""
- IC1 25
- J2 5
-Net 55 "" ""
- IC1 24
- J2 1
-Net 56 "" ""
- OC1 6
- P7 2
-Net 57 "" ""
- IC1 2
- P5 4
- R6 2
-}
-#End

@@ -1,5 +1,5 @@
-comp = "C1" module = "C1"
-comp = "C2" module = "C1"
+comp = "C1" module = "SM1206"
+comp = "C2" module = "SM1206"
 comp = "C3" module = "SM1206"
 comp = "C4" module = "SM1206"
 comp = "D1" module = "PIN_ARRAY_3X1"
